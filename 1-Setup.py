@@ -11,6 +11,11 @@ if use_existing_env == "yes":
 
     # Activate the conda environment
     subprocess.run(["conda", "activate", env_name])
+    
+for root, dirs, files in os.walk(directory):
+    for file in files:
+        path = os.path.join(root, file)
+        os.chmod(path, 0o777)  # Set file permissions to allow deletion
 
 directories_to_remove = [
     "CodeFormer",
